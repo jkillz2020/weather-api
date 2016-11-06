@@ -1,2 +1,14 @@
 body {
   background-color: lightblue; }
+
+#output {
+  text-align: center; }
+
+h1 {
+  text-align: center; }
+
+#bootstrap-override button {
+  margin-left: 45%; }
+
+#bootstrap-override input {
+  margin-left: 50%; }

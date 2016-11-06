@@ -7,10 +7,11 @@
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
-<body>
+<body id="bootstrap-override">
   <h1>WEATHER API!</h1>
-  <div class="input-group">
-  <input type="text" class="form-control" id="weather-search" placeholder="Zipcode" aria-describedby="basic-addon1">
+
+  <div class="input-group col-xs-3 col-xs-offset-3">
+  <input type="text" class="form-control col-xs-3 col-xs-offset-3" id="weather-search" placeholder="Zipcode" required pattern="(\d{5}([\-]\d{4})?)" name="postalCode" aria-describedby="basic-addon1">
 </div>
 <button type="button" class="btn btn-primary btn-lg" id="clicky-button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin' aria-hidden='true'></i>">Get Weather</button>
 

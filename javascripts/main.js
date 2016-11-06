@@ -15,7 +15,7 @@ let localForecast = (zipText) =>{
 
 $.ajax({
   method: 'GET',
-  url: `http://api.openweathermap.org/data/2.5/weather?zip=${zipText},us&&APPID=5ab34be0357b9aa13610f7a9816381a4`
+  url: `http://api.openweathermap.org/data/2.5/weather?zip=${zipText},us&units=imperial&&APPID=5ab34be0357b9aa13610f7a9816381a4`
 }).then( (response2)=>{
   resolve(response2);
 }, (errorResponse2)=>{
@@ -29,18 +29,34 @@ $.ajax({
 };
 
 $(document).ready(function(){
-  console.log("jquery ready");
+  
   $("#clicky-button").on('click', ()=>{
     $("#clicky-button").button("loading");
     $('#output').html("");
     let searchy = $('#weather-search').val();
-    console.log("its working");
     localForecast(searchy).then((dataFromApi)=>{
       $("#clicky-button").button("reset");
     console.log('dataFromApi', dataFromApi);
-      $('#output').append(`<div>${dataFromApi.weather[0].description}</div>`);
+      $('#output').append(`<div style="inline-block">Conditions: ${dataFromApi.weather[0].description}</div>
+                           <div style="inline-block">Wind Speed: ${dataFromApi.wind.speed}</div>
+                           <div style="inline-block">Pressure: ${dataFromApi.main.pressure}</div>
+                           <div style="inline-block">Temperature: ${dataFromApi.main.temp} F</div>`);
   });
 
   });
+
+  // $("#weather-search").on('keypress === 13', ()=>{
+  //   $("#clicky-button").button("loading");
+  //   $('#output').html("");
+  //   let searchy = $('#weather-search').val();
+  //   localForecast(searchy).then((dataFromApi)=>{
+  //     $("#clicky-button").button("reset");
+  //   console.log('dataFromApi', dataFromApi);
+  //     $('#output').append(`<div style="inline-block">Conditions: ${dataFromApi.weather[0].description}</div>
+  //                          <div style="inline-block">Wind Speed: ${dataFromApi.wind.speed}</div>
+  //                          <div style="inline-block">Pressure: ${dataFromApi.main.pressure}</div>`);
+  // });
+
+  // });
 });
 
